@@ -1,12 +1,21 @@
-const objectify = function (listOfSecondString) {
-  const object = {};
-  for (string of listOfSecondString) {
-    const key = string.slice(0, 4);
-    const value = string.slice(4);
-    object[key] = value;
-  }
+const parseFile1 = (contentOfFile1) => contentOfFile1.trim().split("\n");
 
-  return object;
+const parseFile2 = (contentOfFile2) => {
+  const entries = contentOfFile2.trim().split("\n");
+  const listOfEntries = entries.map((e) => [e.slice(0, 4), e.slice(4)]);
+  return Object.fromEntries(listOfEntries);
 };
 
-exports.objectify = objectify;
+const joinMatchingPairs = (startingParts, trailingParts) => {
+  const machedPairs = startingParts.map((string) => {
+    const key = string.slice(-4);
+
+    return string.split(0, -4) + trailingParts[key];
+  });
+
+  return machedPairs.join("\n");
+};
+
+exports.parseFile1 = parseFile1;
+exports.joinMatchingPairs = joinMatchingPairs;
+exports.parseFile2 = parseFile2;

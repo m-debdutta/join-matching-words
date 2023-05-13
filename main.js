@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { parseFile1, parseFile2, joinMatchingPairs } = require("./src/utils.js");
 
 const main = function () {
   const contentOfFile1 = fs.readFileSync(
@@ -10,29 +11,10 @@ const main = function () {
     "utf-8"
   );
 
-  const listOfFirstString = contentOfFile1.split("\n");
-  const listOfSecondString = contentOfFile2.split("\n");
+  const startingParts = parseFile1(contentOfFile1);
+  const trailingParts = parseFile2(contentOfFile2);
 
-  const createPair = function (listOfSecondString) {
-    const pairs = {};
-    for (string of listOfSecondString) {
-      const key = string.slice(0, 4);
-      const value = string.slice(4);
-      pairs[key] = value;
-    }
-
-    return pairs;
-  };
-
-  const object = createPair(listOfSecondString);
-
-  const output = listOfFirstString.map((string) => {
-    const key = string.slice(-4);
-
-    return string.split(0, -4) + object[key];
-  });
-
-  return output.join("\n");
+  return joinMatchingPairs(startingParts, trailingParts);
 };
 
 main();
