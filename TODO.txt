@@ -1,0 +1,41 @@
+small text 1:
+  79oklw
+  381jstc
+  453usja
+  535bdxv
+
+small text 2:
+  jstc331
+  oklw737
+  bdxv211
+  usja514
+
+output :
+  79oklw737
+  381jstc331
+  453usja514
+  535bdxv211
+
+Q : how my data will look like?
+
+parseFile1 :-
+text1: [ 79oklw, 381jstc, 453usja, 535bdxv ]
+
+parseFile2 :-
+text2: [ jstc331, oklw737, bdxv211, usja514 ]
+
+parsedText1:
+keys = [oklw, jstc, usja, bdxv]
+
+parsedText2 :
+  {
+    jstc: 331,
+    oklw: 737,
+    bdxv: 211,
+    usja: 514
+  }
+
+output : [
+  parsedText1.slice(0,-4) + key1 + parsedText2[key1],
+  parsedText1.slice(0,-4) + key2 + parsedText2[key2]
+]
