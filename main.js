@@ -1,5 +1,6 @@
 const fs = require("fs");
-const { parseFile1, parseFile2, joinMatchingPairs } = require("./src/utils.js");
+const { joinMatchingPairs } = require("./src/join.js");
+const { parseFile1, parseFile2 } = require("./src/parse.js");
 
 const main = function () {
   const contentOfFile1 = fs.readFileSync(
